@@ -14,7 +14,7 @@ The local `.env` and backup are ignored by Git. The database connection and hist
 
 ## Deploy on Vercel
 
-Import this repository into Vercel with the **Other** framework preset and the repository root as the project root. No build command or output directory is needed. Vercel serves the static dashboard and `api/webinars.mjs` from the same domain.
+Import this repository into Vercel with the repository root as the project root. `vercel.json` selects the **Other** framework, runs `npm run build`, and serves the generated `public/` folder alongside `api/webinars.mjs`.
 
 In the Vercel project settings, configure these server-side environment variables:
 
