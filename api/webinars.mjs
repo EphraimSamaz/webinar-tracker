@@ -1,3 +1,3 @@
-import handler from './webinars.cjs';
+import handler from '../lib/webinars.cjs';
 
 export default handler;
