@@ -1,353 +1,67 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <link rel="icon" href="https://hub.remax.co.za/images/icons/favicon.ico" />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="https://hub.remax.co.za/images/icons/apple-touch-icon.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="https://hub.remax.co.za/images/icons/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="https://hub.remax.co.za/images/icons/favicon-16x16.png"
-    />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RE/MAX Webinar Analytics Tracker</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              'remax-blue': '#0B2648',
-              'remax-red': '#DC1B2E',
-              'remax-hub-blue': '#1e355e',
-              'remax-collection-blue': '#0C2C53',
-              'remax-light-gray': '#F5F7FA',
-              'remax-dark-gray': '#4A5568',
-            },
-            fontFamily: {
-              sans: ['Montserrat', 'sans-serif'],
-            },
-          },
-        },
-      };
-    </script>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Birthstone&family=Love+Light&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-
-  <body class="bg-remax-light-gray min-h-screen font-sans">
-    <div class="container mx-auto px-4 py-8">
-      <!-- Header with RE/MAX branding https://www.remax.co.za/_next/image?url=%2Fremax_logo.png&w=256&q=75-->
-      <header class="mb-8 flex items-center justify-between">
-        <div>
-          <div class="flex items-center space-x-4">
-            <img
-              src="https://hub.remax.co.za/images/REMAX_Southern_Africa.png"
-              alt="RE/MAX Logo"
-              class="h-20"
-            />
-            <div>
-              <h1 class="text-2xl font-bold text-remax-blue">
-                Webinar Analytics Tracker
-              </h1>
-              <p class="text-remax-dark-gray">
-                Comprehensive webinar tracking and performance reporting
-              </p>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
-        <!-- Input Form  -->
-        <div
-          class="bg-white p-6 rounded-lg shadow-md lg:col-span-1 border-t-4 border-remax-blue"
-        >
-          <h2
-            class="text-xl font-semibold text-remax-hub-blue mb-4 pb-2 border-b border-gray-200"
-          >
-            New Webinar
-          </h2>
-          <form id="webinarForm" class="space-y-4">
-            <div>
-              <label
-                for="webinarName"
-                class="block text-sm font-medium text-remax-dark-gray mb-1"
-                >Webinar Name</label
-              >
-              <input
-                type="text"
-                id="webinarName"
-                placeholder="Enter webinar name"
-                required
-                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-remax-blue focus:border-transparent"
-              />
-            </div>
-
-            <div>
-              <label
-                for="webinarDateTime"
-                class="block text-sm font-medium text-remax-dark-gray mb-1"
-                >Date & Time</label
-              >
-              <input
-                type="datetime-local"
-                id="webinarDateTime"
-                required
-                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-remax-blue focus:border-transparent"
-              />
-            </div>
-
-            <div class="grid grid-cols-2 gap-4">
-              <div>
-                <label
-                  for="webinarDuration"
-                  class="block text-sm font-medium text-remax-dark-gray mb-1"
-                  >Duration (min)</label
-                >
-                <input
-                  type="number"
-                  id="webinarDuration"
-                  placeholder="Minutes"
-                  required
-                  class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-remax-blue focus:border-transparent"
-                />
-              </div>
-              <div>
-                <label
-                  for="hostName"
-                  class="block text-sm font-medium text-remax-dark-gray mb-1"
-                  >Host</label
-                >
-                <input
-                  type="text"
-                  id="hostName"
-                  placeholder="Host name"
-                  required
-                  class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-remax-blue focus:border-transparent"
-                />
-              </div>
-            </div>
-
-            <div class="grid grid-cols-2 gap-4">
-              <div>
-                <label
-                  for="webinarRegistrants"
-                  class="block text-sm font-medium text-remax-dark-gray mb-1"
-                  >Registrants</label
-                >
-                <input
-                  type="number"
-                  id="webinarRegistrants"
-                  placeholder="Number"
-                  required
-                  class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-remax-blue focus:border-transparent"
-                />
-              </div>
-              <div>
-                <label
-                  for="webinarAttendees"
-                  class="block text-sm font-medium text-remax-dark-gray mb-1"
-                  >Attendees</label
-                >
-                <input
-                  type="number"
-                  id="webinarAttendees"
-                  placeholder="Number"
-                  required
-                  class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-remax-blue focus:border-transparent"
-                />
-              </div>
-            </div>
-
-            <button
-              type="submit"
-              class="w-full bg-remax-blue text-white py-2 px-4 rounded-md hover:bg-remax-collection-blue transition font-medium shadow-md"
-            >
-              Save Webinar
-            </button>
-          </form>
-        </div>
-
-        <!-- Webinar List & Summary -->
-        <div
-          class="bg-white p-6 rounded-lg shadow-md lg:col-span-3 border-t-4 border-remax-red"
-        >
-          <!-- Monthly Summary -->
-          <div class="mt-8">
-            <h3
-              class="font-semibold text-lg text-remax-hub-blue mb-4 pb-2 border-b border-gray-200"
-            >
-              Webinar Insights
-            </h3>
-            <div
-              id="summaryStats"
-              class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
-            ></div>
-          </div>
-          <div
-            class="flex mt-5 flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4"
-          >
-            <h2 class="text-xl font-semibold text-remax-hub-blue">Webinars</h2>
-            <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
-              <select
-                id="monthFilter"
-                class="px-4 py-2 border rounded-md focus:ring-2 focus:ring-remax-blue focus:border-transparent text-sm"
-              >
-                <option value="">All Months</option>
-              </select>
-              <button
-                id="generateReport"
-                class="bg-remax-blue text-white py-2 px-4 rounded-md hover:bg-remax-collection-blue transition font-medium text-sm shadow-md whitespace-nowrap"
-              >
-                Generate Monthly Report
-              </button>
-            </div>
-          </div>
-
-          <div class="overflow-x-auto">
-            <table class="min-w-full divide-y divide-gray-200">
-              <thead class="bg-remax-hub-blue">
-                <tr>
-                  <th
-                    class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider"
-                  >
-                    Name
-                  </th>
-                  <th
-                    class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider"
-                  >
-                    Date
-                  </th>
-                  <th
-                    class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider"
-                  >
-                    Duration
-                  </th>
-                  <th
-                    class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider"
-                  >
-                    Registrants
-                  </th>
-                  <th
-                    class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider"
-                  >
-                    Attendees
-                  </th>
-                  <th
-                    class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider"
-                  >
-                    Host
-                  </th>
-                  <!-- <th
-                    class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider"
-                  >
-                    Actions
-                  </th> -->
-                </tr>
-              </thead>
-              <tbody id="webinarList" class="divide-y divide-gray-200">
-                <!-- Webinars will be listed here -->
-              </tbody>
-            </table>
-          </div>
-        </div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#000E35">
+  <title>Webinar Analytics | REMAX Southern Africa</title>
+  <link rel="icon" type="image/png" href="assets/brand/balloon-mark.png">
+  <link rel="stylesheet" href="design-system/styles.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="config.js" defer></script>
+  <script src="ui.js" defer></script>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to dashboard</a>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand-lockup" href="#overview" aria-label="REMAX Southern Africa webinar analytics home">
+      <img src="assets/brand/remax-logo-dark.png" alt="REMAX" width="1112" height="308">
+      <span>SOUTHERN AFRICA</span>
+    </a>
+    <div class="workspace-title">Learning & development<small>Webinar analytics</small></div>
+    <nav class="top-navigation" aria-label="Main navigation">
+      <a href="#overview" data-nav="overview" class="active">Overview</a>
+      <a href="#webinars" data-nav="webinars">Webinars <span class="nav-count" id="navCount">0</span></a>
+      <button id="reportsNav">Reports</button>
+    </nav>
+    <span class="preview-pill"><i></i><span id="connectionStatus">Connecting</span></span>
+  </div>
+</header>
+<div class="app-shell">
+  <main id="main">
+    <section id="overview" class="overview-hero" aria-labelledby="overviewTitle">
+      <div class="hero-copy">
+        <p class="eyebrow">REMAX LEARNING & DEVELOPMENT</p>
+        <h1 id="overviewTitle">Every session.<br>A step higher.</h1>
+        <p class="hero-description">Your webinar performance, in focus.<br>Understand your reach. Grow a stronger network.</p>
+        <button class="button hero-action" id="addWebinar"><span data-icon="plus"></span>Add webinar</button>
       </div>
-    </div>
-
-    <!-- Report Modal -->
-    <div
-      id="reportModal"
-      class="fixed inset-0 bg-black bg-opacity-50 hidden items-center flex justify-center p-4 z-50"
-    >
-      <div
-        class="bg-white rounded-lg p-6 max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-xl"
-      >
-        <div
-          class="flex justify-between items-center mb-6 pb-2 border-b border-gray-200"
-        >
-          <div>
-            <h2 class="text-2xl font-bold text-remax-blue">Monthly Report</h2>
-            <p class="text-sm text-remax-dark-gray" id="reportMonth"></p>
-          </div>
-          <button
-            id="closeModal"
-            class="text-remax-dark-gray hover:text-remax-blue text-2xl"
-          >
-            &times;
-          </button>
-        </div>
-        <div id="reportContent" class="space-y-4"></div>
-        <div class="mt-6 flex justify-end space-x-3">
-          <button
-            id="printReport"
-            class="bg-white border border-remax-blue text-remax-blue py-2 px-4 rounded-md hover:bg-remax-light-gray transition font-medium"
-          >
-            Print Report
-          </button>
-          <button
-            id="exportReport"
-            class="bg-remax-blue text-white py-2 px-4 rounded-md hover:bg-remax-collection-blue transition font-medium"
-          >
-            Export to CSV
-          </button>
-        </div>
+      <div class="hero-brand" aria-hidden="true">
+        <img src="assets/brand/balloon-mark.png" alt="" width="900" height="1010">
+        <span>LEARNING TAKES US FURTHER</span>
       </div>
+    </section>
+    <div class="preview-banner" id="connectionBanner" hidden><span data-icon="info"></span><p id="connectionMessage"></p></div>
+    <div class="section-heading"><h2>Performance at a glance</h2><label class="period-label" for="monthFilter"><span data-icon="calendar"></span><select id="monthFilter"><option value="">All months</option></select></label></div>
+    <section id="summaryStats" class="stats-grid" aria-label="Performance summary"></section>
+    <div class="insights-grid">
+      <section class="panel chart-panel"><div class="panel-heading"><div><h2>Audience engagement</h2><p>Registrations and attendance by webinar</p></div><div class="legend"><span><i class="registration-dot"></i>Registrants</span><span><i class="attendance-dot"></i>Attendees</span></div></div><div id="engagementChart" class="chart" aria-label="Audience engagement chart"></div><p class="chart-footnote">Latest 6 sessions in the selected period · SAST</p></section>
+      <section class="panel spotlight"><div class="panel-heading"><h2>Session spotlight</h2><span class="icon-tile" data-icon="award"></span></div><div id="spotlightContent"></div></section>
     </div>
-
-    <!-- Snackbar container -->
-    <div id="snackbar" class="fixed top-4 right-4 z-50 hidden">
-      <div id="snackbarMessage" class="px-4 py-2 rounded shadow-lg"></div>
-    </div>
-    <!-- Snackbar Script -->
-    <script>
-      function showSnackbar(message, type = 'error') {
-        const snackbar = document.getElementById('snackbar');
-        const msg = document.getElementById('snackbarMessage');
-
-        // Color styles
-        const colors = {
-          error: 'bg-blue-800',
-          success: 'bg-green-500',
-          info: 'bg-blue-500',
-          warning: 'bg-yellow-500 text-white',
-        };
-
-        // Reset classes
-        msg.className = `bg-remax-red text-white px-4 py-2 rounded shadow-lg ${
-          colors[type] || colors.info
-        }`;
-        msg.textContent = message;
-
-        // Show
-        snackbar.classList.remove('hidden');
-        snackbar.classList.add('opacity-100');
-
-        // Hide after 3 seconds
-        setTimeout(() => {
-          snackbar.classList.add('hidden');
-        }, 3000);
-      }
-    </script>
-    <script src='app.js'></script>
-  </body>
+    <section class="panel webinar-panel" id="webinars"><div class="panel-heading"><div><h2>Webinars <span class="count-badge" id="tableCount">0</span></h2><p>Your sessions, all in one place.</p></div><button class="button secondary" id="generateReport"><span data-icon="download"></span>View report</button></div>
+      <div class="table-toolbar"><label class="search-field"><span data-icon="search"></span><input id="searchInput" type="search" aria-label="Search webinars or hosts" placeholder="Search webinars or hosts…"></label><label class="sort-label">Sort by<select id="sortOrder"><option value="newest">Newest first</option><option value="oldest">Oldest first</option><option value="attendance">Highest attendance</option><option value="name">Webinar name</option></select></label></div>
+      <div class="table-scroll" role="region" aria-label="Webinar sessions" tabindex="0"><table><thead><tr><th scope="col">Webinar</th><th scope="col">Date & time</th><th scope="col">Duration</th><th scope="col">Registrants</th><th scope="col">Attendees</th><th scope="col">Attendance</th><th scope="col"><span class="sr-only">Actions</span></th></tr></thead><tbody id="webinarList"></tbody></table></div>
+      <div id="emptyState" class="empty-state" hidden><span data-icon="search"></span><h3>No webinars found</h3><p>Try another search or select a different month.</p><button id="clearFilters" class="button secondary">Clear filters</button></div>
+      <footer class="table-footer"><span id="resultCount" role="status"></span><span>All times in South African Standard Time</span></footer>
+    </section>
+    <footer class="page-footer"><span class="footer-brand"><img src="assets/brand/balloon-mark.png" alt="" width="900" height="1010">REMAX Southern Africa · Learning & development</span><span>Webinar analytics</span></footer>
+  </main>
+</div>
+<dialog id="webinarDialog" aria-labelledby="formTitle"><form id="webinarForm"><div class="dialog-heading"><div><p class="eyebrow">SESSION DETAILS</p><h2 id="formTitle">Add webinar</h2></div><button class="icon-button" type="button" data-close="webinarDialog" aria-label="Close webinar form">×</button></div><p class="form-intro">Capture a completed session and its audience results.</p><input type="hidden" id="webinarId"><label>Webinar name<input id="webinarName" name="name" required maxlength="160" placeholder="e.g. Build your business plan"></label><label>Host<input id="hostName" name="host" required maxlength="100" placeholder="Full name"></label><div class="form-grid"><label>Date & time (SAST)<input id="webinarDateTime" name="date_time" type="datetime-local" required></label><label>Duration (minutes)<input id="webinarDuration" name="duration" type="number" min="1" max="1440" step="1" required placeholder="60"></label><label>Registrants<input id="webinarRegistrants" name="registrants" type="number" min="0" max="1000000" step="1" required placeholder="0"></label><label>Attendees<input id="webinarAttendees" name="attendees" type="number" min="0" max="1000000" step="1" required placeholder="0"></label></div><p id="formError" role="alert" class="form-error"></p><div class="dialog-actions"><button class="button secondary" type="button" data-close="webinarDialog">Cancel</button><button class="button primary" type="submit">Save webinar</button></div></form></dialog>
+<dialog id="reportDialog" class="report-dialog" aria-labelledby="reportTitle"><div class="dialog-heading"><div><p class="eyebrow">REMAX SOUTHERN AFRICA</p><h2 id="reportTitle">Webinar report</h2><p id="reportPeriod"></p></div><button class="icon-button" data-close="reportDialog" aria-label="Close report">×</button></div><div id="reportContent"></div><div class="dialog-actions"><button class="button secondary" id="printReport"><span data-icon="report"></span>Print</button><button class="button primary" id="exportReport"><span data-icon="download"></span>Export CSV</button></div></dialog>
+<dialog id="deleteDialog" aria-labelledby="deleteTitle"><h2 id="deleteTitle">Remove this webinar?</h2><p id="deleteDescription"></p><p>This removes the webinar from the database.</p><div class="dialog-actions"><button class="button secondary" data-close="deleteDialog">Keep webinar</button><button class="button danger" id="confirmDelete">Remove webinar</button></div></dialog>
+<dialog id="accessDialog" aria-labelledby="accessTitle"><form id="accessForm"><h2 id="accessTitle">Open webinar tracker</h2><p class="form-intro">Enter the access key provided by your administrator.</p><label>Access key<input id="accessKey" type="password" autocomplete="current-password" required></label><p id="accessError" role="alert" class="form-error"></p><div class="dialog-actions"><button class="button primary" type="submit">Connect</button></div></form></dialog>
+<div id="snackbar" role="status" class="toast" hidden></div>
+</body>
 </html>

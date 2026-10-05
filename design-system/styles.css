@@ -1,0 +1,18 @@
+/* ============================================================
+   REMAX Southern Africa Design System — global entry point
+   ============================================================
+   Consumers link THIS one file. It pulls in:
+     1. colors_and_type.css — source-of-truth brand tokens,
+        @font-face rules (Gotham + Gotham Narrow), base element
+        styles, and HUB shell dimensions.
+     2. tokens/tokens.css    — the flat generic-name alias layer
+        (--color-*, --font-size-*, --space-N), status semantic
+        tokens, z-index, motion, component aliases, and the
+        dark-mode + reduced-motion overrides.
+
+   Order matters: colors_and_type.css first (defines --rmx-*,
+   --bg-*, --fg-*, --t-*), then tokens.css which aliases them.
+   ============================================================ */
+
+@import "colors_and_type.css";
+@import "tokens/tokens.css";

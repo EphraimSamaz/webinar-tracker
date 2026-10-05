@@ -1,0 +1,513 @@
+/* ============================================================
+   REMAX Southern Africa — Design Tokens
+   colors_and_type.css
+
+   Drop-in design tokens for the REMAX SA brand.
+   Reference: Brand Manual Addendum (Nov 2025) + International
+   Trademark & Graphic Standards (Feb 2026).
+
+   The primary internal-tooling stack is Material UI. These
+   tokens are written to layer cleanly over MUI's defaults
+   (Roboto base, 8px grid, outlined inputs) while still being
+   usable on plain HTML / marketing surfaces.
+   ============================================================ */
+
+/* Roboto removed — Gotham is the sole brand typeface across all surfaces.
+   MUI projects: override MUI's default fontFamily to 'Gotham' in your theme. */
+
+
+/* ---------- Web Fonts ----------------------------------------
+   Gotham is the only sanctioned typeface family in the REMAX
+   brand. Use Gotham Narrow for tight horizontal layouts
+   (yard signs, badges, labels) and Gotham for everything else.
+   ------------------------------------------------------------ */
+
+@font-face {
+  font-family: "Gotham";
+  src: url("fonts/Gotham-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gotham";
+  src: url("fonts/Gotham-LightItalic.otf") format("opentype");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gotham";
+  src: url("fonts/Gotham-Book.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gotham";
+  src: url("fonts/Gotham-BookItalic.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gotham";
+  src: url("fonts/Gotham-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gotham";
+  src: url("fonts/Gotham-MediumItalic.otf") format("opentype");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gotham";
+  src: url("fonts/Gotham-Bold_0.otf") format("opentype"),
+       url("fonts/Gotham-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gotham";
+  src: url("fonts/Gotham-BoldItalic.otf") format("opentype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gotham";
+  src: url("fonts/Gotham-Black.ttf") format("truetype"),
+       url("fonts/Gotham_Black_Regular.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gotham";
+  src: url("fonts/Gotham-Ultra.otf") format("opentype");
+  font-weight: 950;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gotham";
+  src: url("fonts/Gotham-UltraItalic.otf") format("opentype");
+  font-weight: 950;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gotham Narrow";
+  src: url("fonts/GothamNarrow-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gotham Narrow";
+  src: url("fonts/GothamNarrow-LightItalic.otf") format("opentype");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gotham Narrow";
+  src: url("fonts/GothamNarrow-Book.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gotham Narrow";
+  src: url("fonts/GothamNarrow-BookItalic.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gotham Narrow";
+  src: url("fonts/GothamNarrow-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gotham Narrow";
+  src: url("fonts/GothamNarrow-Bold.otf") format("opentype"),
+       url("fonts/Gotham_Narrow_Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gotham Narrow";
+  src: url("fonts/GothamNarrow-Black.otf") format("opentype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gotham Narrow";
+  src: url("fonts/GothamNarrow-BlackItalic.otf") format("opentype");
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ---------- Design Tokens ------------------------------------ */
+
+:root {
+  /* ===== Brand colours (logo / property sign palette) =====
+     These are the ONLY colours sanctioned for REMAX brand
+     applications. Do not introduce new hues. */
+  --rmx-red:               #FF1200; /* REMAX Primary Red   — Pantone 185 C */
+  --rmx-red-bridge:        #AA1120; /* Bridge Red          — Pantone 1805  */
+  --rmx-red-dark:          #660000; /* Dark Red            — Pantone 188 C */
+
+  --rmx-blue:              #0043FF; /* REMAX Primary Blue  — Pantone 286 C */
+  --rmx-blue-bridge:       #0C2749; /* Bridge Blue         — Pantone 2767  */
+  --rmx-blue-dark:         #000E35; /* Dark Blue           — Pantone 295 C */
+  --rmx-blue-sky:          #A3D4F2; /* Sky Blue (Collection accent) — Pantone 277 C */
+
+  --rmx-cream:             #F7F5EE; /* Cream — Pantone Warm Grey 1 C */
+  --rmx-white:             #FFFFFF;
+  --rmx-black:             #000000; /* Pantone Black 6 */
+  --rmx-charcoal:          #232323; /* Dark Charcoal Grey */
+  --rmx-grey-light:        #C4C6C8; /* Pantone 428 C — used on Collection */
+
+  /* ===== Sub-brand divisions =====
+     REMAX SA fields two sanctioned sub-brands alongside the
+     core residential brand. Each has its own logotype and
+     palette and is governed by separate sections of the
+     brand manual. Sub-brand logos are SUPPLIED PNG ARTWORK
+     in assets/sub-brands/ — never recreated in code.
+
+     The REMAX Collection — luxury residential. Logo colours
+     restricted to Dark Blue, Cream, or White. Uses the core
+     --rmx-blue-dark / --rmx-cream tokens; --rmx-grey-light
+     is the Collection accent. The Balloon mark may NOT
+     appear next to The REMAX Collection logo. */
+  --rmx-collection-ink:    var(--rmx-blue-dark); /* #000E35 */
+  --rmx-collection-paper:  var(--rmx-cream);     /* #F7F5EE */
+  --rmx-collection-accent: var(--rmx-grey-light);/* #C4C6C8 — Pantone 428 C */
+
+  /* REMAX Commercial — commercial real estate division. Has
+     its own palette per the manual (page 99). NOTE: Commercial
+     red and blue differ from the core REMAX brand swatches —
+     do not substitute. Use these tokens only inside Commercial
+     surfaces. */
+  --rmx-commercial-red:    #DC1C2E; /* Commercial Red  — Pantone 1795 */
+  --rmx-commercial-blue:   #004E9B; /* Commercial Blue — Pantone 293  */
+  --rmx-commercial-navy:   var(--rmx-blue-dark); /* Dark Blue lockup */
+  --rmx-commercial-grey:   #939BA1; /* Commercial Grey — Pantone 430 */
+  --rmx-commercial-ink:    #414042; /* Dark Grey body ink */
+
+  /* ===== Semantic surfaces — Light (default) =====
+     The DEFAULT background is WHITE — REMAX HUB is the canonical
+     product surface and uses white in light mode, dark-mode tokens
+     in dark mode. Cream (--rmx-cream) is a brand-reference surface
+     used for marketing collateral, signage echoes, and printed
+     materials — not for HUB UI. */
+  --bg-app:                #FFFFFF; /* HUB / app default */
+  --bg-marketing:          var(--rmx-cream); /* brand collateral only */
+  --bg:                    var(--bg-app);
+  --bg-alt:                #F8F9FB; /* subtle row stripe, card stripe */
+  --bg-stripe:             #F4F6FA;
+  --bg-inverse:            var(--rmx-blue-dark);
+  --bg-inverse-deep:       var(--rmx-black);
+
+  --fg:                    #1A1F2E; /* MUI-ish ink (not pure black) */
+  --fg-strong:             var(--rmx-black);
+  --fg-muted:              #6B7280;
+  --fg-subtle:             #9CA3AF;
+  --fg-on-inverse:         var(--rmx-cream);
+  --fg-on-inverse-muted:   #A9B0C2;
+
+  /* ===== Dark-mode surface scale =====
+     Used by REMAX HUB (internal agent platform). Apply via
+     .dark-mode class on <body> or a wrapping element.
+     Tinted with --rmx-blue-dark for brand coherence — these
+     are NOT neutral greys.
+     bg-dm-*  = page / container backgrounds (darkest → lightest)
+     fg-dm-*  = text hierarchy on dark surfaces
+     border-dm = divider on dark surfaces */
+  --bg-dm-deep:            #050D1E; /* deepest bg — full-screen dark pages */
+  --bg-dm-base:            #080F24; /* default page bg in dark mode */
+  --bg-dm-card:            #0D1830; /* card / panel surface */
+  --bg-dm-raised:          #111E3A; /* elevated card / active row */
+  --bg-dm-overlay:         #162040; /* drawer / modal overlay bg */
+
+  --fg-dm:                 #E8EAF0; /* primary text on dark */
+  --fg-dm-muted:           rgba(232, 234, 240, 0.45); /* secondary / meta text */
+  --fg-dm-subtle:          rgba(232, 234, 240, 0.25); /* placeholders, dividers */
+
+  --border-dm:             rgba(255, 255, 255, 0.07); /* default dark border */
+  --border-dm-strong:      rgba(255, 255, 255, 0.14); /* focused / active border */
+
+  /* ===== HUB shell dimensions =====
+     Use these to keep nav rail, top bar and AI panel consistent
+     across any screen built inside the HUB chrome. */
+  --hub-nav-width:         228px;
+  --hub-topbar-height:     60px;
+  --hub-ai-panel-width:    380px;
+
+  /* ===== Z-index scale =====
+     Use these instead of magic literals so stacking order is
+     predictable and refactor-safe. Modal-tier and above are
+     reserved for full-overlay surfaces (Command Palette,
+     Bottom Sheet, Modal). The Tooltip token sits highest so
+     tips can float above any open modal. */
+  --z-below:               -1; /* @kind other */
+  --z-base:                0; /* @kind other */
+  --z-raised:              10;     /* @kind other */
+  --z-dropdown:            100;    /* @kind other */
+  --z-sticky:              200;    /* @kind other */
+  --z-overlay:             300;    /* @kind other */
+  --z-modal:               400;    /* @kind other */
+  --z-toast:               500;    /* @kind other */
+  --z-tooltip:             600;    /* @kind other */
+
+  --accent:                var(--rmx-red);
+  --accent-press:          var(--rmx-red-bridge);
+  --link:                  var(--rmx-blue);
+  --link-press:            var(--rmx-blue-bridge);
+
+  /* Borders, dividers, focus */
+  --border:                rgba(0, 14, 53, 0.12);     /* dark-blue tinted */
+  --border-strong:         rgba(0, 14, 53, 0.28);
+  --divider:               rgba(0, 14, 53, 0.08);
+  --focus-ring:            color-mix(in oklab, var(--rmx-blue) 60%, transparent);
+
+  /* Status / performance (data-viz scale) */
+  --status-sale:           var(--rmx-red);      /* For Sale  / Te Koop */
+  --status-sold:           var(--rmx-blue-dark);/* Sold */
+  --status-onshow:         var(--rmx-blue);     /* On Show */
+  --status-tolet:          var(--rmx-blue-bridge);/* To Let */
+
+  /* Performance bar / chart fills. These are TOKENS used to
+     express target vs actual on KPI cards. Keep red == below,
+     amber == at risk, blue == neutral progress, green == on
+     or above target. */
+  --perf-below:            #E5383B; /* warm red — below target */
+  --perf-warn:             #F2A02E; /* amber — at risk */
+  --perf-neutral:          var(--rmx-blue); /* progress */
+  --perf-positive:         #2E7D32; /* MUI green — on target */
+  --perf-track:            #F1F3F8; /* progress track */
+
+  /* Currency colours */
+  --money-positive:        #2E7D32;
+  --money-negative:        var(--rmx-red);
+  --money-neutral:         var(--rmx-blue);
+
+  /* ===== Typography family stack =====
+     Default body face is Roboto (MUI's default). Use Gotham as
+     the brand display face for big numbers, hero headers, and
+     anything that should feel REMAX-branded. Gotham Narrow is
+     reserved for tight horizontal compositions (signage,
+     badges). */
+  --font-ui:      "Gotham", "Helvetica Neue", Arial, sans-serif;
+  --font-sans:    "Gotham", "Helvetica Neue", Arial, sans-serif;
+  --font-narrow:  "Gotham Narrow", "Gotham", "Helvetica Neue Condensed",
+                  Arial, sans-serif;
+  --font-display: "Gotham", "Helvetica Neue", Arial, sans-serif;
+  /* Mono is intentionally a system stack — REMAX has no monospace
+     in the brand. Use only for code/disclaimer reference numbers. */
+  --font-mono:    ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  /* ===== Type scale (digital, 16px base) =====
+     The brand operates at print scale (47–207pt yard sign
+     headings). On screen we step down but keep the contrast
+     between Black weight headlines and Book body. */
+  --t-display-1:  clamp(48px, 7vw, 96px);  /* @kind font */
+  --t-display-2:  clamp(36px, 5vw, 64px);  /* @kind font */
+  --t-h1:         clamp(32px, 4vw, 48px);  /* @kind font */
+  --t-h2:         clamp(24px, 3vw, 36px);  /* @kind font */
+  --t-h3:         20px;
+  --t-h4:         16px;                    /* eyebrow / category */
+  --t-body:       16px;
+  --t-body-lg:    18px;
+  --t-small:      14px;
+  --t-micro:      12px;                    /* legal / PPRA disclaimers */
+
+  --lh-tight:     1.02;                    /* @kind font */
+  --lh-display:   1.04;                    /* @kind font */
+  --lh-heading:   1.12;                    /* @kind font */
+  --lh-body:      1.55;                    /* @kind font */
+  --lh-caption:   1.4;                     /* @kind font */
+
+  --ls-tight:     -0.01em;
+  --ls-display:   -0.02em;
+  --ls-eyebrow:   0.14em;                  /* ALL-CAPS labels */
+  --ls-numbers:   0.05em;                  /* 0 1 2 3 4 5 6 7 8 9 spacing on signage */
+
+  /* ===== Spacing (4px grid) ===== */
+  --space-1:      4px;
+  --space-2:      8px;
+  --space-3:      12px;
+  --space-4:      16px;
+  --space-5:      24px;
+  --space-6:      32px;
+  --space-7:      48px;
+  --space-8:      64px;
+  --space-9:      96px;
+  --space-10:     128px;
+
+  /* ===== Radius =====
+     REMAX collateral is overwhelmingly square (business cards are
+     specced "Styling: Square"). Use radius only for digital
+     affordances — buttons, inputs, cards. */
+  --radius-0:     0;
+  --radius-xs:    2px;
+  --radius-sm:    4px;     /* inputs, small buttons */
+  --radius-md:    6px;     /* default for cards */
+  --radius-lg:    10px;
+  --radius-pill:  999px;   /* status capsules (For Sale / On Show) */
+  --radius-balloon: 50% 50% 50% 50% / 55% 55% 45% 45%; /* balloon-pin silhouette helper */
+
+  /* ===== Shadow / elevation =====
+     The brand is flat. Use elevation sparingly — and tint it
+     with the dark-blue so it feels brand-correct rather than
+     generic neutral. */
+  --shadow-1:     0 1px 2px rgba(0, 14, 53, 0.06),
+                  0 1px 1px rgba(0, 14, 53, 0.04);
+  --shadow-2:     0 4px 12px rgba(0, 14, 53, 0.08),
+                  0 1px 2px  rgba(0, 14, 53, 0.06);
+  --shadow-3:     0 12px 32px rgba(0, 14, 53, 0.12),
+                  0 2px 6px   rgba(0, 14, 53, 0.06);
+  --shadow-inset: inset 0 0 0 1px var(--border);
+
+  /* ===== Motion ===== */
+  --ease-out:     cubic-bezier(0.2, 0.7, 0.2, 1);  /* @kind other */
+  --ease-in-out:  cubic-bezier(0.65, 0, 0.35, 1);  /* @kind other */
+  --dur-1:        120ms;   /* @kind other */
+  --dur-2:        200ms;   /* @kind other */
+  --dur-3:        320ms;   /* @kind other */
+
+  /* ===== Containers ===== */
+  --container-sm: 640px;
+  --container-md: 960px;
+  --container-lg: 1200px;
+  --container-xl: 1440px;
+}
+
+/* ---------- Element defaults --------------------------------- */
+
+html { color-scheme: light; }
+
+body {
+  font-family: var(--font-ui);  /* Roboto, MUI default */
+  font-weight: 400;
+  font-size: var(--t-body);
+  line-height: var(--lh-body);
+  color: var(--fg);
+  background: var(--bg-app);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, .h1 {
+  font-family: var(--font-display);
+  font-weight: 900;            /* Gotham Black — REMAX's headline weight */
+  font-size: var(--t-h1);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--ls-display);
+  margin: 0;
+}
+h2, .h2 {
+  font-family: var(--font-display);
+  font-weight: 700;            /* Gotham Bold */
+  font-size: var(--t-h2);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--ls-tight);
+  margin: 0;
+}
+h3, .h3 {
+  font-weight: 700;
+  font-size: var(--t-h3);
+  line-height: var(--lh-heading);
+  margin: 0;
+}
+h4, .h4 {
+  font-weight: 500;            /* Gotham Medium */
+  font-size: var(--t-h4);
+  line-height: var(--lh-heading);
+  margin: 0;
+}
+p { margin: 0; text-wrap: pretty; }
+small, .text-small { font-size: var(--t-small); }
+.text-micro { font-size: var(--t-micro); line-height: var(--lh-caption); }
+
+/* Display headline — used for hero, slide titles, yard-sign-style headers */
+.display-1 {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: var(--t-display-1);
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+  text-transform: none;
+}
+.display-narrow {
+  font-family: var(--font-narrow);
+  font-weight: 900;
+  font-size: var(--t-display-1);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tight);
+  text-transform: uppercase;
+}
+
+/* Eyebrow — all-caps tracked label. The REMAX "REGISTERED WITH
+   THE PPRA" / "EACH OFFICE INDEPENDENTLY OWNED AND OPERATED"
+   pattern. */
+.eyebrow {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: var(--t-small);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-eyebrow);
+  color: var(--fg-muted);
+}
+
+/* Signage-style "letter-spaced numbers" — mirrors business
+   card pattern: 0 1 2 3 4 5 6 7 8 9 */
+.numbers-spaced {
+  font-family: var(--font-narrow);
+  font-weight: 700;
+  letter-spacing: var(--ls-numbers);
+  font-variant-numeric: tabular-nums;
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+  text-underline-offset: 3px;
+  transition: color var(--dur-1) var(--ease-out);
+}
+a:hover { color: var(--link-press); text-decoration: underline; }
+a:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
+
+/* Brand-correct status capsule */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 24px;
+  padding: 0 10px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  background: var(--rmx-cream);
+  color: var(--rmx-blue-dark);
+}
+.tag--sale   { background: var(--rmx-red);       color: #fff; }
+.tag--sold   { background: var(--rmx-blue-dark); color: #fff; }
+.tag--onshow { background: var(--rmx-blue);      color: #fff; }
+.tag--tolet  { background: var(--rmx-blue-bridge); color: #fff; }

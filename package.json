@@ -1,0 +1,12 @@
+{
+  "name": "webinar-tracker",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node --env-file=.env server.cjs",
+    "check": "node --check ui.js && node --check api/webinars.cjs && node --check api/webinars.mjs && node --check server.cjs && node --check scripts/import-backup.cjs"
+  },
+  "dependencies": {
+    "pg": "^8.13.1"
+  }
+}

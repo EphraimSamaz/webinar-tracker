@@ -1,0 +1,6 @@
+*.backup.gz
+.env*
+archive-app.js
+app.js
+supabase.js
+.github/

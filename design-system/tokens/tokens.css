@@ -1,0 +1,562 @@
+/* ============================================================
+   REMAX Southern Africa — Design Tokens (Audit Export)
+   audit/tokens.css
+
+   This file is a flat, dependency-free export of every design
+   token in the system, mapped to the W3C-style
+   `category-variant-state` naming convention requested by the
+   audit. It is generated from `colors_and_type.css` (the source
+   of truth) plus this file's own gap-filler tokens (status
+   semantic, z-index, motion easings, component aliases, etc.).
+
+   USAGE
+     Production / Claude Code:
+       <link rel="stylesheet" href="colors_and_type.css">
+       <link rel="stylesheet" href="audit/tokens.css">
+     Brand-namespaced tokens (--rmx-*, --bg-app, --fg, --t-h1)
+     and generic-namespaced tokens (--color-background-primary,
+     --font-size-md, --space-4) both resolve to the same values.
+
+   DARK MODE
+     Attach `data-theme="dark"` to <html> or <body>, OR rely on
+     `prefers-color-scheme: dark` (handled automatically below).
+
+   REDUCED MOTION
+     A global `prefers-reduced-motion: reduce` rule zeros every
+     duration token, so component CSS that consumes
+     `var(--duration-base)` etc. automatically degrades.
+
+   ------------------------------------------------------------ */
+
+@import url("../colors_and_type.css");
+
+/* ============================================================
+   LIGHT MODE (default)
+   ============================================================ */
+
+:root {
+
+  /* ---------- COLOUR · PRIMITIVES ----------
+     Brand palette (11 sanctioned hues). The brand-namespaced
+     tokens live in colors_and_type.css; the aliases below
+     surface them under the generic primitives convention. */
+
+  --color-brand-red:                var(--rmx-red);
+  --color-brand-red-bridge:         var(--rmx-red-bridge);
+  --color-brand-red-dark:           var(--rmx-red-dark);
+  --color-brand-blue:               var(--rmx-blue);
+  --color-brand-blue-bridge:        var(--rmx-blue-bridge);
+  --color-brand-blue-dark:          var(--rmx-blue-dark);
+  --color-brand-blue-sky:           var(--rmx-blue-sky);
+  --color-brand-cream:              var(--rmx-cream);
+  --color-brand-white:              var(--rmx-white);
+  --color-brand-black:              var(--rmx-black);
+  --color-brand-charcoal:           var(--rmx-charcoal);
+  --color-brand-grey-light:         var(--rmx-grey-light);
+
+  /* Sub-brand primitives */
+  --color-collection-ink:           var(--rmx-collection-ink);
+  --color-collection-paper:         var(--rmx-collection-paper);
+  --color-collection-accent:        var(--rmx-collection-accent);
+  --color-commercial-red:           var(--rmx-commercial-red);
+  --color-commercial-blue:          var(--rmx-commercial-blue);
+  --color-commercial-navy:          var(--rmx-commercial-navy);
+  --color-commercial-grey:          var(--rmx-commercial-grey);
+  --color-commercial-ink:           var(--rmx-commercial-ink);
+
+  /* ---------- COLOUR · NEUTRAL RAMP ----------
+     Synthesised tinted-grey scale for surfaces, borders,
+     dividers, and disabled states. Tinted with --rmx-blue-dark
+     so it reads brand-correct, not generic neutral. NOT part
+     of the 11 sanctioned brand colours — use only inside HUB,
+     never on print/marketing collateral. */
+
+  --neutral-50:                     #F8F9FB;
+  --neutral-100:                    #F1F3F8;
+  --neutral-200:                    #E5E8F0;
+  --neutral-300:                    #D1D5E0;
+  --neutral-400:                    #9CA3AF;
+  --neutral-500:                    #6B7280;
+  --neutral-600:                    #4B5160;
+  --neutral-700:                    #353B4A;
+  --neutral-800:                    #1F2433;
+  --neutral-900:                    #0F1422;
+
+  /* ---------- COLOUR · STATUS PALETTES ----------
+     Surface, text and border families for success / warning /
+     error / info. Mapped to brand hues where possible; the
+     warning amber is the same one used in --perf-warn. */
+
+  --status-success-50:              #E8F5E9;
+  --status-success-200:             #A5D6A7;
+  --status-success-500:             #2E7D32;
+  --status-success-700:             #1B5E20;
+
+  --status-warning-50:              #FFF8E1;
+  --status-warning-200:             #FFD180;
+  --status-warning-500:             #F2A02E;
+  --status-warning-700:             #B86E0C;
+
+  --status-error-50:                #FFEBEE;
+  --status-error-200:               #FFB4A8;
+  --status-error-500:               var(--rmx-red);
+  --status-error-700:               var(--rmx-red-dark);
+
+  --status-info-50:                 #E3F2FD;
+  --status-info-200:                #90CAF9;
+  --status-info-500:                var(--rmx-blue);
+  --status-info-700:                var(--rmx-blue-bridge);
+
+  /* ---------- COLOUR · SEMANTIC · BACKGROUND ---------- */
+  --color-background-primary:       var(--bg-app);          /* #FFFFFF */
+  --color-background-secondary:     var(--bg-alt);          /* #F8F9FB */
+  --color-background-tertiary:      var(--bg-stripe);       /* #F4F6FA */
+  --color-background-inverse:       var(--bg-inverse);      /* #000E35 */
+  --color-background-inverse-deep:  var(--bg-inverse-deep); /* #000000 */
+  --color-background-brand:         var(--rmx-red);
+  --color-background-brand-soft:    rgba(255, 18, 0, 0.08);
+
+  --color-background-success:       var(--status-success-500);
+  --color-background-success-soft:  var(--status-success-50);
+  --color-background-warning:       var(--status-warning-500);
+  --color-background-warning-soft:  var(--status-warning-50);
+  --color-background-error:         var(--status-error-500);
+  --color-background-error-soft:    var(--status-error-50);
+  --color-background-info:          var(--status-info-500);
+  --color-background-info-soft:     var(--status-info-50);
+
+  --color-background-disabled:      var(--neutral-100);
+
+  /* ---------- COLOUR · SEMANTIC · TEXT ---------- */
+  --color-text-primary:             var(--fg);              /* #1A1F2E */
+  --color-text-secondary:           var(--fg-muted);        /* #6B7280 */
+  --color-text-tertiary:            var(--fg-subtle);       /* #9CA3AF */
+  --color-text-inverse:             var(--fg-on-inverse);   /* cream */
+  --color-text-inverse-muted:       var(--fg-on-inverse-muted);
+  --color-text-disabled:            var(--neutral-400);
+  --color-text-on-brand:            #FFFFFF;
+  --color-text-link:                var(--link);            /* --rmx-blue */
+  --color-text-link-press:          var(--link-press);
+
+  --color-text-success:             var(--status-success-700);
+  --color-text-warning:             var(--status-warning-700);
+  --color-text-error:               var(--status-error-700);
+  --color-text-info:                var(--status-info-700);
+
+  /* ---------- COLOUR · SEMANTIC · BORDER ---------- */
+  --color-border-default:           var(--border);
+  --color-border-strong:            var(--border-strong);
+  --color-border-divider:           var(--divider);
+  --color-border-focus:             var(--rmx-blue);
+  --color-border-success:           var(--status-success-200);
+  --color-border-warning:           var(--status-warning-200);
+  --color-border-error:             var(--status-error-200);
+  --color-border-info:              var(--status-info-200);
+
+  /* ---------- COLOUR · INTERACTIVE ---------- */
+  --color-interactive-primary:           var(--rmx-red);
+  --color-interactive-primary-hover:     var(--rmx-red-bridge);
+  --color-interactive-primary-active:    var(--rmx-red-dark);
+  --color-interactive-primary-disabled:  var(--neutral-200);
+
+  --color-interactive-secondary:         var(--rmx-blue-dark);
+  --color-interactive-secondary-hover:   var(--rmx-blue-bridge);
+  --color-interactive-secondary-active:  #000820;
+  --color-interactive-secondary-disabled: var(--neutral-200);
+
+  --color-interactive-ghost-bg-hover:    rgba(0, 14, 53, 0.04);
+  --color-interactive-ghost-bg-active:   rgba(0, 14, 53, 0.08);
+
+  --color-interactive-ai:                var(--rmx-blue);
+  --color-interactive-ai-soft:           rgba(0, 67, 255, 0.07);
+
+  /* Overlays for hover / press anywhere (not just buttons) */
+  --color-overlay-hover:                 rgba(0, 14, 53, 0.04);
+  --color-overlay-press:                 rgba(0, 14, 53, 0.08);
+
+  /* ---------- COLOUR · COMPONENT ALIASES ----------
+     Mapped from the semantic layer above. Edit the semantic
+     layer; component tokens follow automatically. */
+
+  /* Button */
+  --button-bg-primary:              var(--color-interactive-primary);
+  --button-bg-primary-hover:        var(--color-interactive-primary-hover);
+  --button-bg-primary-active:       var(--color-interactive-primary-active);
+  --button-bg-primary-disabled:     var(--color-interactive-primary-disabled);
+  --button-text-primary:            var(--color-text-on-brand);
+
+  --button-bg-secondary:            var(--color-interactive-secondary);
+  --button-bg-secondary-hover:      var(--color-interactive-secondary-hover);
+  --button-text-secondary:          var(--color-text-on-brand);
+
+  --button-bg-ghost:                transparent;
+  --button-bg-ghost-hover:          var(--color-interactive-ghost-bg-hover);
+  --button-text-ghost:              var(--color-text-primary);
+  --button-border-ghost:            var(--color-border-strong);
+
+  --button-bg-destructive:          var(--color-background-error);
+  --button-text-destructive:        var(--color-text-on-brand);
+
+  /* Input */
+  --input-bg:                       var(--color-background-primary);
+  --input-bg-disabled:              var(--color-background-disabled);
+  --input-text:                     var(--color-text-primary);
+  --input-placeholder:              var(--color-text-tertiary);
+  --input-border-default:           var(--color-border-default);
+  --input-border-focus:             var(--color-border-focus);
+  --input-border-error:             var(--color-border-error);
+  --input-shadow-focus:             0 0 0 3px var(--focus-ring);
+
+  /* Card */
+  --card-bg:                        var(--color-background-primary);
+  --card-bg-alt:                    var(--color-background-secondary);
+  --card-border:                    var(--color-border-default);
+  --card-shadow:                    var(--shadow-sm);
+
+  /* ============================================================
+     TYPOGRAPHY
+     ============================================================ */
+
+  /* Families */
+  --font-family-heading:            var(--font-display);  /* Gotham */
+  --font-family-body:               var(--font-sans);     /* Gotham */
+  --font-family-display:            var(--font-display);
+  --font-family-narrow:             var(--font-narrow);   /* Gotham Narrow */
+  --font-family-mono:               var(--font-mono);     /* system stack */
+
+  /* Sizes — generic scale (alias the existing brand scale) */
+  --font-size-xs:                   11px;
+  --font-size-sm:                   var(--t-small);    /* 14px */
+  --font-size-md:                   var(--t-body);     /* 16px */
+  --font-size-lg:                   var(--t-body-lg);  /* 18px */
+  --font-size-xl:                   var(--t-h3);       /* 20px */
+  --font-size-2xl:                  28px;
+  --font-size-3xl:                  var(--t-h2);       /* clamp(24,3vw,36) */
+  --font-size-display:              var(--t-display-1);
+
+  /* Weights — Gotham native names + generic aliases */
+  --font-weight-light:              300;
+  --font-weight-book:               400;
+  --font-weight-regular:            400;
+  --font-weight-medium:             500;
+  --font-weight-semibold:           500;  /* Gotham has no 600 — falls to Medium */
+  --font-weight-bold:               700;
+  --font-weight-black:              900;
+  --font-weight-ultra:              950;
+
+  /* Line heights */
+  --font-line-height-tight:         var(--lh-tight);    /* 1.02 */
+  --font-line-height-heading:       var(--lh-heading);  /* 1.12 */
+  --font-line-height-base:          var(--lh-body);     /* 1.55 */
+  --font-line-height-relaxed:       1.75;
+  --font-line-height-caption:       var(--lh-caption);  /* 1.4 */
+
+  /* Tracking / letter-spacing */
+  --font-tracking-tight:            var(--ls-tight);
+  --font-tracking-display:          var(--ls-display);
+  --font-tracking-normal:           0;
+  --font-tracking-wide:             var(--ls-eyebrow);  /* 0.14em — caps labels */
+  --font-tracking-signage:          var(--ls-numbers);  /* 0.05em */
+
+  /* Semantic text-style shorthands (for inline-style JSX use) */
+  --text-style-display:             900 var(--t-display-1) / var(--lh-display) var(--font-display);
+  --text-style-h1:                  900 var(--t-h1) / var(--lh-heading) var(--font-display);
+  --text-style-h2:                  700 var(--t-h2) / var(--lh-heading) var(--font-display);
+  --text-style-h3:                  700 var(--t-h3) / var(--lh-heading) var(--font-display);
+  --text-style-h4:                  500 var(--t-h4) / var(--lh-heading) var(--font-display);
+  --text-style-body-lg:             400 var(--t-body-lg) / var(--lh-body) var(--font-sans);
+  --text-style-body:                400 var(--t-body) / var(--lh-body) var(--font-sans);
+  --text-style-body-sm:             400 var(--t-small) / var(--lh-body) var(--font-sans);
+  --text-style-label:               500 var(--t-small) / var(--lh-heading) var(--font-sans);
+  --text-style-caption:             400 var(--t-micro) / var(--lh-caption) var(--font-sans);
+  --text-style-eyebrow:             700 var(--t-small) / var(--lh-heading) var(--font-narrow);
+  --text-style-code:                400 var(--t-small) / var(--lh-body) var(--font-mono);
+
+  /* ============================================================
+     SPACING (4px grid — full audit scale)
+     ============================================================ */
+
+  --space-0:                        0;
+  --space-1:                        4px;
+  --space-2:                        8px;
+  --space-3:                        12px;
+  --space-4:                        16px;
+  --space-5:                        20px;
+  --space-6:                        24px;
+  --space-7:                        28px;
+  --space-8:                        32px;
+  --space-10:                       40px;
+  --space-12:                       48px;
+  --space-14:                       56px;
+  --space-16:                       64px;
+  --space-20:                       80px;
+  --space-24:                       96px;
+  --space-32:                       128px;
+
+  /* Semantic spacing aliases */
+  --space-component-padding-sm:     var(--space-2);
+  --space-component-padding-md:     var(--space-3);
+  --space-component-padding-lg:     var(--space-4);
+  --space-component-gap-sm:         var(--space-2);
+  --space-component-gap-md:         var(--space-4);
+  --space-component-gap-lg:         var(--space-6);
+  --space-section-gap:              var(--space-12);
+  --space-page-margin-mobile:       var(--space-6);   /* 24 */
+  --space-page-margin-desktop:      var(--space-12);  /* 48 */
+
+  /* ============================================================
+     BORDER RADIUS
+     ============================================================ */
+
+  --radius-none:                    0;
+  --radius-xs:                      2px;
+  --radius-sm:                      4px;
+  --radius-md:                      6px;
+  --radius-lg:                      10px;
+  --radius-xl:                      12px;
+  --radius-2xl:                     16px;
+  --radius-full:                    9999px;
+  --radius-pill:                    9999px;
+
+  /* Component-specific aliases (brand is mostly square — keep small) */
+  --radius-button:                  var(--radius-lg);   /* 10 — HUB norm */
+  --radius-input:                   var(--radius-lg);
+  --radius-card:                    var(--radius-md);
+  --radius-modal:                   var(--radius-lg);
+  --radius-drawer:                  var(--radius-none); /* drawers are flush */
+  --radius-badge:                   var(--radius-pill);
+  --radius-avatar:                  var(--radius-full);
+  --radius-balloon:                 50% 50% 50% 50% / 55% 55% 45% 45%;
+
+  /* ============================================================
+     BORDER WIDTH
+     ============================================================ */
+
+  --border-width-none:              0; /* @kind other */
+  --border-width-thin:              1px;
+  --border-width-base:              1px;
+  --border-width-medium:            2px;
+  --border-width-thick:             3px;       /* NavRail active strip */
+  --border-width-extra-thick:       4px;
+
+  /* ============================================================
+     SHADOW · ELEVATION
+     Brand is FLAT — use higher elevation sparingly. Each shadow
+     is tinted with --rmx-blue-dark for brand coherence.
+     Dark-mode overrides below switch to black-tinted shadows
+     with a 1px top inner highlight so depth is still readable.
+     ============================================================ */
+
+  --shadow-none:                    none;
+  --shadow-xs:                      0 1px 1px rgba(0, 14, 53, 0.04);
+  --shadow-sm:                      var(--shadow-1);
+  --shadow-md:                      var(--shadow-2);
+  --shadow-lg:                      var(--shadow-3);
+  --shadow-xl:                      0 24px 56px rgba(0, 14, 53, 0.18),
+                                    0 4px 12px rgba(0, 14, 53, 0.08);
+  --shadow-inset:                   var(--shadow-inset);
+  --shadow-focus:                   0 0 0 3px var(--focus-ring);
+
+  /* ============================================================
+     MOTION
+     ============================================================ */
+
+  --duration-instant:               0ms;            /* @kind other */
+  --duration-fast:                  var(--dur-1);   /* @kind other */
+  --duration-base:                  var(--dur-2);   /* @kind other */
+  --duration-slow:                  var(--dur-3);   /* @kind other */
+  --duration-slower:                500ms;          /* @kind other */
+
+  --easing-linear:                  linear;                            /* @kind other */
+  --easing-in:                      cubic-bezier(0.4, 0, 1, 1);        /* @kind other */
+  --easing-out:                     var(--ease-out);     /* @kind other */
+  --easing-in-out:                  var(--ease-in-out);  /* @kind other */
+  --easing-spring:                  cubic-bezier(0.34, 1.56, 0.64, 1); /* @kind other */
+  /* ⚠️ Spring is for marketing/onboarding surfaces only. NOT for
+     data-dense HUB views — REMAX HUB is operator-grade. */
+
+  /* ============================================================
+     Z-INDEX SCALE
+     ============================================================ */
+
+  --z-below:                        -1;  /* @kind other */
+  --z-base:                         0;   /* @kind other */
+  --z-raised:                       10;  /* @kind other */
+  --z-dropdown:                     100; /* @kind other */
+  --z-sticky:                       200; /* @kind other */
+  --z-overlay:                      300; /* @kind other */
+  --z-modal:                        400; /* @kind other */
+  --z-toast:                        500; /* @kind other */
+  --z-tooltip:                      600; /* @kind other */
+
+  /* ============================================================
+     ICONOGRAPHY
+     ============================================================ */
+
+  --icon-size-xs:                   16px;
+  --icon-size-sm:                   20px;
+  --icon-size-md:                   24px;
+  --icon-size-lg:                   32px;
+  --icon-size-xl:                   48px;
+  --icon-stroke-width:              2; /* @kind other */
+  --icon-color-default:             currentColor; /* @kind color */
+
+  /* ============================================================
+     LAYOUT · GRID · BREAKPOINTS
+     Breakpoint custom-props are reference-only — CSS @media
+     queries can't consume vars. Use them in JSX/JS via
+     getComputedStyle, or as a documentation reference for the
+     hard-coded media query values.
+     ============================================================ */
+
+  --breakpoint-xs:                  0; /* @kind other */
+  --breakpoint-sm:                  480px;
+  --breakpoint-md:                  768px;
+  --breakpoint-lg:                  1024px;
+  --breakpoint-xl:                  1280px;
+  --breakpoint-2xl:                 1536px;
+
+  --grid-cols-mobile:               4;  /* @kind other */
+  --grid-cols-tablet:               8;  /* @kind other */
+  --grid-cols-desktop:              12; /* @kind other */
+  --grid-gutter-mobile:             16px;
+  --grid-gutter-tablet:             20px;
+  --grid-gutter-desktop:            24px;
+
+  --container-sm:                   640px;
+  --container-md:                   960px;
+  --container-lg:                   1200px;
+  --container-xl:                   1440px;
+  --container-max:                  1440px;
+
+  /* ============================================================
+     ACCESSIBILITY
+     ============================================================ */
+
+  --target-min:                     44px;   /* Minimum touch target */
+  --focus-ring-width:               2px;
+  --focus-ring-offset:              2px;
+  --focus-ring-color:               var(--focus-ring);
+
+  /* ============================================================
+     HUB SHELL (product layer)
+     ============================================================ */
+
+  --hub-nav-width:                  228px;
+  --hub-topbar-height:              60px;
+  --hub-ai-panel-width:             380px;
+  --hub-content-padding:            var(--space-6);
+}
+
+/* ============================================================
+   DARK MODE — semantic + component overrides
+   Activated by [data-theme="dark"] on <html> or <body>, OR by
+   the user-preference fallback further down.
+   ============================================================ */
+
+[data-theme="dark"] {
+
+  /* Backgrounds */
+  --color-background-primary:       var(--bg-dm-base);
+  --color-background-secondary:     var(--bg-dm-card);
+  --color-background-tertiary:      var(--bg-dm-raised);
+  --color-background-inverse:       var(--rmx-cream);
+  --color-background-inverse-deep:  var(--rmx-white);
+  --color-background-brand-soft:    rgba(255, 18, 0, 0.14);
+  --color-background-disabled:      rgba(255, 255, 255, 0.04);
+
+  /* Text */
+  --color-text-primary:             var(--fg-dm);
+  --color-text-secondary:           var(--fg-dm-muted);
+  --color-text-tertiary:            var(--fg-dm-subtle);
+  --color-text-inverse:             var(--fg);
+  --color-text-disabled:            rgba(232, 234, 240, 0.25);
+
+  /* Borders */
+  --color-border-default:           var(--border-dm);
+  --color-border-strong:            var(--border-dm-strong);
+  --color-border-divider:           rgba(255, 255, 255, 0.05);
+
+  /* Status — desaturate slightly for dark surfaces */
+  --color-background-success-soft:  rgba(46, 125, 50, 0.16);
+  --color-background-warning-soft:  rgba(242, 160, 46, 0.16);
+  --color-background-error-soft:    rgba(255, 18, 0, 0.16);
+  --color-background-info-soft:     rgba(0, 67, 255, 0.16);
+
+  --color-text-success:             var(--status-success-200);
+  --color-text-warning:             var(--status-warning-200);
+  --color-text-error:               var(--status-error-200);
+  --color-text-info:                var(--status-info-200);
+
+  /* Overlays */
+  --color-overlay-hover:            rgba(255, 255, 255, 0.04);
+  --color-overlay-press:            rgba(255, 255, 255, 0.08);
+
+  /* Interactive ghosts read off lighter overlay in dark mode */
+  --color-interactive-ghost-bg-hover:  rgba(255, 255, 255, 0.04);
+  --color-interactive-ghost-bg-active: rgba(255, 255, 255, 0.08);
+
+  /* Shadows — brand-blue rgba is invisible on dark blue
+     backgrounds, switch to deeper black + a top inner highlight
+     so depth still reads. */
+  --shadow-xs:   0 1px 1px rgba(0, 0, 0, 0.32),
+                 inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  --shadow-sm:   0 2px 4px rgba(0, 0, 0, 0.40),
+                 inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  --shadow-md:   0 6px 16px rgba(0, 0, 0, 0.48),
+                 inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  --shadow-lg:   0 16px 40px rgba(0, 0, 0, 0.56),
+                 inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  --shadow-xl:   0 28px 64px rgba(0, 0, 0, 0.62),
+                 inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+  /* Card */
+  --card-bg:                        var(--bg-dm-card);
+  --card-bg-alt:                    var(--bg-dm-raised);
+  --card-border:                    var(--border-dm);
+
+  /* Input */
+  --input-bg:                       var(--bg-dm-card);
+  --input-text:                     var(--fg-dm);
+  --input-placeholder:              var(--fg-dm-subtle);
+  --input-border-default:           var(--border-dm);
+  --input-border-focus:             var(--rmx-blue);
+  --input-bg-disabled:              rgba(255, 255, 255, 0.03);
+}
+
+/* OS-preference auto dark mode.
+   Dark mode is driven explicitly via `data-theme="dark"` (registered
+   above) or the HUB `.dark-mode` class. To also follow the OS setting,
+   set data-theme="dark" from JS on load when
+   `window.matchMedia('(prefers-color-scheme: dark)').matches` and the
+   user has no stored preference. A CSS `:root:not([data-theme="light"])`
+   fallback was removed because that selector can't be registered as a
+   token scope — the JS approach keeps the manual toggle authoritative. */
+
+/* ============================================================
+   REDUCED MOTION
+   Zeros every duration token so consuming components degrade.
+   Easings are kept (they're harmless when duration is 0).
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  :root,
+  [data-theme="dark"] {
+    --duration-instant:  0ms; /* @kind other */
+    --duration-fast:     0ms; /* @kind other */
+    --duration-base:     0ms; /* @kind other */
+    --duration-slow:     0ms; /* @kind other */
+    --duration-slower:   0ms; /* @kind other */
+
+    /* Defensive: also zero any direct transitions / animations
+       that consume the raw values. */
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration:   0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration:  0ms !important;
+    scroll-behavior:      auto !important;
+  }
+}

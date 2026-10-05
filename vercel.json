@@ -1,0 +1,3 @@
+{
+  "functions": { "api/webinars.mjs": { "maxDuration": 10 } }
+}
