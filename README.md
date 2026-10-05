@@ -14,6 +14,8 @@ The local `.env` and backup are ignored by Git. The database connection and hist
 
 ## Deploy on Vercel
 
+For a manual deployment from this folder without a Git push, follow [DEPLOY.md](DEPLOY.md).
+
 Import this repository into Vercel with the repository root as the project root. `vercel.json` selects the **Other** framework, runs `npm run build`, and serves the generated `public/` folder alongside `api/webinars.mjs`.
 
 In the Vercel project settings, configure these server-side environment variables:
@@ -27,4 +29,4 @@ If the dashboard stays on GitHub Pages instead, set `ALLOWED_ORIGIN` in Vercel t
 
 The dashboard stores the access key only in the current browser tab's session storage. Share the access key with authorized users through a private channel. Vercel's environment variables should use the same values as the local `.env`; never add the connection string or access key to `config.js`, HTML, or GitHub Pages secrets that are rendered into client code.
 
-The previous Supabase keep-alive workflow is removed. The old `app.js`, `archive-app.js`, and `supabase.js` files are legacy files and are not loaded by `index.html`.
+The previous Supabase keep-alive workflow is removed. The old `app.js`, `archive-app.js`, and `supabase.js` files are legacy files and are not loaded by `index.html`
